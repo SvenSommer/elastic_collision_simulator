@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elastic Collision Simulation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Elastic Collision Simulation</h1>
+        <div class="form-container">
+            <div class="form-group">
+                <label for="x1_initial">Initial Position of blue object:</label>
+                <input type="number" id="x1_initial" value="10">
+            </div>
+            <div class="form-group">
+                <label for="x2_initial">Initial Position of red object:</label>
+                <input type="number" id="x2_initial" value="75">
+            </div>
+            <div class="form-group">
+                <label for="m1">Mass of blue object:</label>
+                <input type="number" id="m1" value="1">
+            </div>
+            <div class="form-group">
+                <label for="m2">Mass of red object:</label>
+                <input type="number" id="m2" value="1">
+            </div>
+            <div class="form-group">
+                <label for="v1">Initial Velocity of blue object:</label>
+                <input type="number" id="v1" value="30">
+            </div>
+            <div class="form-group">
+                <label for="v2">Initial Velocity of red object:</label>
+                <input type="number" id="v2" value="0">
+            </div>
+            <!-- You can add more form groups as needed -->
+            <button class="simulation-button" onclick="startSimulation()">Start Simulation</button>
+        </div>
+        <canvas id="canvas"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
