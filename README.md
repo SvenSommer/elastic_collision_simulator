@@ -5,9 +5,6 @@
 ## Project Overview
 This Elastic Collision Simulator is an interactive web application that allows users to simulate the elastic collision of multiple objects in a 2D space. Users can add objects, set their initial positions, masses, and velocities, and then observe the dynamics of their collisions and interactions.
 
-## Project Overview
-This Elastic Collision Simulator is an interactive web application that allows users to simulate the elastic collision of multiple objects in a 2D space. Users can add objects, set their initial positions, masses, and velocities, and then observe the dynamics of their collisions and interactions.
-
 ## Features
 - Dynamically add and remove objects with customizable properties (mass, velocity, and position).
 - Drag objects to set their initial positions on the canvas.
@@ -18,7 +15,6 @@ This Elastic Collision Simulator is an interactive web application that allows u
 **1. Clone the Repository**
 ```
 git clone https://github.com/SvenSommer/elastic_collision_simulator.git
-
 ```
 
 **2. Run backend**
