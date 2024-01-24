@@ -25,12 +25,13 @@ def update_velocities(obj1, obj2):
 def simulate(objects, dt, total_time, simulation_area):
     logging.info(f"Starting simulation with objects: {objects}")
   
-    positions = {obj['id']: [obj['position']] for obj in objects}
+    simulation_data = {obj['id']: {'positions': [obj['position']], 'velocities': [obj['velocity']]} for obj in objects}
+
     for _ in range(int(total_time / dt)):
-        # logging.info(f"Time step positions: {[obj['position'] for obj in objects]}")
+        # Update positions and velocities, and check wall collisions
         for obj in objects:
-            # Wall collision
-            if obj['position'] <= 0 or obj['position'] >= simulation_area:
+            # Wall collision considering object size
+            if obj['position'] <= obj['objectSize']/2 or obj['position'] >= simulation_area - obj['objectSize']/2:
                 obj['velocity'] = -obj['velocity']
             obj['position'] += obj['velocity'] * dt
 
@@ -38,14 +39,18 @@ def simulate(objects, dt, total_time, simulation_area):
         for i in range(len(objects)):
             for j in range(i + 1, len(objects)):
                 distance = abs(objects[i]['position'] - objects[j]['position'])
-                if distance <= objects[i]['objectSize']/2:
+                if distance <= (objects[i]['objectSize'] + objects[j]['objectSize']) / 2:
                     logging.info(f"Collision detected between {objects[i]['id']} and {objects[j]['id']}")
                     objects[i]['velocity'], objects[j]['velocity'] = update_velocities(objects[i], objects[j])
-        
-        for obj in objects:
-            positions[obj['id']].append(obj['position'])
 
-    return positions
+        # Store position and velocity
+        for obj in objects:
+            simulation_data[obj['id']]['positions'].append(obj['position'])
+            simulation_data[obj['id']]['velocities'].append(obj['velocity'])
+
+    return simulation_data
+
+
 
 @app.route('/simulate', methods=['POST'])
 def handle_simulation():
